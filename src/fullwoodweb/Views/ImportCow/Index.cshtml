@@ -1,0 +1,8 @@
+﻿@model ImportViewModel
+
+<h1>Import Cow Data</h1>
+<p style="color: red">Milking import is not implemented yet, coming soon</p>
+<form asp-action="Index" asp-controller="ImportCow" method="post" enctype="multipart/form-data">
+    <input asp-for="JsonFile" type="file" />
+    <button type="submit" class="btn btn-primary">Import</button>
+</form>

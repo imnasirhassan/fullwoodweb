@@ -1,0 +1,70 @@
+﻿@model List<fullwoodweb.Models.CowViewModel>
+
+@section JavaScript
+{
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+}
+@section Styles
+{
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        let table = new DataTable('#cowTable');
+    });
+</script>
+
+<div class="text-left">
+    <a asp-action="create" asp-controller="Cow">Create</a>
+    <table id="cowTable">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Cow Name
+                </th>
+                <th>
+                    Cow Number
+                </th>
+                <th>
+                    Registered Date
+                </th>
+                <th>
+                    On Farm
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.CowName
+                    </td>
+                    <td>
+                        @item.CowNumber
+                    </td>
+                    <td>
+                        @item.RegisteredDate
+                    </td>
+                    <td>
+                        <input type="checkbox" readonly checked="@item.OnFarm" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Update", new { id = item.Id }) : @Html.ActionLink("Remove", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

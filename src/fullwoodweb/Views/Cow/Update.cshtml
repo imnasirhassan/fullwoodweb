@@ -1,0 +1,35 @@
+﻿@model CowViewModel
+
+<form asp-action="Update" asp-area="" asp-controller="Cow" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OnFarm)
+                @Html.CheckBoxFor(model => model.OnFarm,
+                         new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CowName)
+                <input asp-for="CowName" type="text" class="form-control required"
+                       placeholder="Enter Cow Name" tabindex="1">
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CowNumber)
+                <input asp-for="CowNumber" readonly type="text" class="form-control required"
+                       tabindex="1">
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.RegisteredDate)
+                <input asp-for="RegisteredDate" readonly type="text" class="form-control required" 
+                tabindex="1">
+            </div>
+            <div class="form-group">
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+            <div class="card-footer float-end">
+                <button type="submit" class="btn btn-primary">Update Cow</button>
+                <a asp-action="Index" asp-controller="Cow" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
